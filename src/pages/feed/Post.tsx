@@ -1,6 +1,8 @@
 import React from "react";
 import { Post, useComments } from "@lens-protocol/react-web";
 import Comments from "./Comments";
+import { SelectForm } from "@/components/ui/select-identity";
+import { Slider } from "@/components/ui/slider";
 
 function convertIPFSToGateway(ipfsHash: string) {
     const doubleipfs = "ipfs://ipfs://"
@@ -36,13 +38,10 @@ const Post = ({ post } : { post : Post}) => {
                     {formatedDate}
                 </p>
                 <p className="text-gray-700 text-base whitespace-normal">{content}</p>
-        
             </div>
         </div>
-        <Comments postId={post.id} />
     </div>
     )
-            
 
 }
 
