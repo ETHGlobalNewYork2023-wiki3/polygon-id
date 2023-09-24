@@ -27,6 +27,7 @@
     "autoprefixer": "10.4.14",
     "class-variance-authority": "^0.6.1",
     "clsx": "^1.2.1",
+    "emoji-slider": "^0.2.0",
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.8",
     "helia": "^2.0.3",
