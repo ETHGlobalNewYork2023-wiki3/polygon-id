@@ -3,14 +3,12 @@ import useCheckForResponse from "@/hooks/useVerificationResponse";
 import { useQRCode } from "next-qrcode";
 import { useEffect, useMemo } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { useActiveProfile, useCreateComment } from "@lens-protocol/react-web";
+import { CollectPolicyType, ContentFocus, ProfileOwnedByMe, useActiveProfile, useCreateComment } from "@lens-protocol/react-web";
+import { Button } from "./button";
+import {uploadJSON} from "@/lib/upload"
+import { WIKI3_FOOTER, WIKI3_HEADER } from "@/lib/wiki3";
 
-import { createHelia } from 'helia'
-import { strings } from '@helia/strings'
-import { json } from '@helia/json'
-
-
-const QRCode = ({identity} : {identity: string}) => {
+const QRCode = ({publicationId, identity, profile, veracity} : {profile: ProfileOwnedByMe}) => {
     const sessionId = useMemo(() => uuidv4(), []);
     const {
     data: qrCode,
@@ -25,35 +23,32 @@ const QRCode = ({identity} : {identity: string}) => {
     );
    const { Canvas } = useQRCode();
 
-   const {data: profile, loading} = useActiveProfile();
-
    useEffect(() => {
         if (!!verificationResponse) {
             console.log("FIRE USECOMMENT")
         }},
         [verificationResponse]
    )
-   
-   const upload = async (data: unknown): Promise<string> => {
-    const helia = await createHelia()
-    const j = json(helia)
 
-    const myImmutableAddress = await j.add(data)
+   const { execute: create, error, isPending } = useCreateComment({ publisher: profile, upload: uploadJSON })
+   const handleCreateVote = async () => {
 
+    const content = `${WIKI3_HEADER}${veracity},${identity}${WIKI3_FOOTER}`
 
-    const url = await j.get(myImmutableAddress)
-  
-    return url;
-  }
-
-   const { execute, error, isPending } = useCreateComment({ publisher: profile, upload })
-   const handleCreateVote = () => {
-        if (profile) {
-
-        }
+    const response = await create({
+        publicationId,
+        content,
+        contentFocus: ContentFocus.TEXT,
+        locale: 'en',
+        collect: {
+          type: CollectPolicyType.NO_COLLECT
+        },
+      });
+      console.log("DINGGINDSGN", response)
    }
    return (
     <div>
+        <Button onClick={() => handleCreateVote()}> Fire UseMakeComment </Button>
         {!loadingQrCode && <Canvas
         text={JSON.stringify(qrCode)}
         options={{

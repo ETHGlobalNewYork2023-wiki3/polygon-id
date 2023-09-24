@@ -26,16 +26,14 @@ export default function Feed() {
                 hasMore={hasMore}
                 className="grid place-content-center w-full">
                 <>
-                    <p> TESTING</p>
                     {
                         publication?.__typename == "Post" && 
                         <Post key={'0x91ba-0x01'} post={publication} />
                     }
-                        <p> END OF TESTING</p>
-                    {feedItems?.map((feedItem) => (
+                    {/* {feedItems?.map((feedItem) => (
                         feedItem.__typename == "Post" && 
                             <Post key={feedItem.id} post={feedItem} />
-                    ))}
+                    ))} */}
                 
                 </>
             </InfiniteList>

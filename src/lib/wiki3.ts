@@ -1,6 +1,6 @@
 
-const WIKI3_HEADER = "___wiki3\n"
-const WIKI3_FOOTER = "wiki3___"
+export const WIKI3_HEADER = "___wiki3\n"
+export const WIKI3_FOOTER = "\nwiki3___"
 
 import { Comment } from "@lens-protocol/react-web"
 
