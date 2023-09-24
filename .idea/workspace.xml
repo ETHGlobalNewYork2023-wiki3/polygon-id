@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abed8e37-47c1-469c-b363-a217b2c4f38d" name="Changes" comment="fix: merge conflict">
-      <change afterPath="$PROJECT_DIR$/src/components/ui/emoji-slider.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/emoji-slider.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/emoji-slider.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/feed/Comments.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/feed/Comments.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/feed/InfiniteList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/feed/InfiniteList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/feed/Post.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/feed/Post.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/feed/InfiniteList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/feed/InfiniteList.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
