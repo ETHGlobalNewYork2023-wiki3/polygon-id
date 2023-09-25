@@ -30,10 +30,10 @@ export default function Feed() {
                         publication?.__typename == "Post" && 
                         <Post key={'0x91ba-0x01'} post={publication} />
                     }
-                    {/* {feedItems?.map((feedItem) => (
+                    {feedItems?.map((feedItem) => (
                         feedItem.__typename == "Post" && 
                             <Post key={feedItem.id} post={feedItem} />
-                    ))} */}
+                    ))}
                 
                 </>
             </InfiniteList>

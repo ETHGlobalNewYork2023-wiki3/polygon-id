@@ -5,7 +5,7 @@ export const WIKI3_FOOTER = "\nwiki3___"
 import { Comment } from "@lens-protocol/react-web"
 
 
-const isCommentAVote = (comment : string) => {
+export const isCommentAVote = (comment : string) => {
     return comment.length >= WIKI3_HEADER.length + WIKI3_FOOTER.length &&
         comment.startsWith(WIKI3_HEADER) && comment.endsWith(WIKI3_FOOTER)
 }

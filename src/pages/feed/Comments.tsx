@@ -17,6 +17,7 @@ import { useQRCode } from "next-qrcode";
 import useGenerateQrCode from "@/hooks/useGenerateQrCode";
 import useCheckForResponse from "@/hooks/useVerificationResponse";
 import QRCode from "@/components/ui/QRCode";
+import { WIKI3_FOOTER, WIKI3_HEADER, isCommentAVote } from "@/lib/wiki3";
 
 
 
@@ -66,8 +67,8 @@ const maxLover = (votes: any) => {
 }
   const whoLovesThisMeme = (comments: string[]) => {
     const votes : any = {}
-    for (const comment of comments) {
-      const x = whoLovesThisMemeSingleComment(comment)
+    for (let index = 0; index < comments.length; index ++) {
+      const x = whoLovesThisMemeSingleComment(comments[index])
       const identity = x[0] as string
       const veracity = x[1]
       if (!(identity in votes)) votes[identity] = 0
@@ -76,9 +77,10 @@ const maxLover = (votes: any) => {
     return votes
   }
   const whoLovesThisMemeSingleComment = (comment: string) => {
-    const data = extractSubstring(comment, "__WIKI3__", "__WIKI3__")
-    const identity = extractSubstring(data!, ",", "__WIKI3__")
-    const veracity = Number(extractSubstring(data!, "__WIKI3__", ","))
+    const data = extractSubstring(comment, WIKI3_HEADER, WIKI3_FOOTER)
+    console.log(comment, data)
+    const [identity, veracity] = data?.split(",")
+    console.log(identity, veracity)
     return [
       identity,
       veracity,
@@ -87,6 +89,7 @@ const maxLover = (votes: any) => {
 
 
     const comments = commentObjects ? commentObjects.map(({ metadata: { content }}) => content ) : [];
+    const votes = commentObjects?.map(({ metadata: { content }}) => content ).filter((comment) => isCommentAVote(comment))
     return (
         <div className="text-center overflow-y-scroll px-8 py-4 m-8 shadow-lg w-full">
           <Select defaultValue="comments">
@@ -96,11 +99,13 @@ const maxLover = (votes: any) => {
             <SelectContent>
             <SelectGroup>
                 <SelectItem value="voting">Wiki3</SelectItem>
-                <SelectItem value="addComment">Add Comment</SelectItem>
+                <SelectItem value="addComment">Add Vote</SelectItem>
                 <SelectItem value="comments">{`Comments (${comments.length})`}</SelectItem>
             </SelectGroup>
             </SelectContent>
         </Select>
+        {/* <p>Veracity Measure By Public</p> */}
+        {/* { comments.length > 0 && JSON.stringify(whoLovesThisMeme(votes))} */}
         <label>Veracity Measure {veracity}</label>
           <Slider value={[veracity]} onValueChange={(value) => setVeracity(value[0])} defaultValue={[0.5]} max={1} step={0.1} />
             <Select value={selectedIdentity} onValueChange={(value) => handleChangeIdentity(value)}>
