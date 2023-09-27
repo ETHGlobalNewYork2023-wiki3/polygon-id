@@ -18,7 +18,7 @@ const InfiniteList = ({className, children, next, loading, hasMore}) => {
     }, [children])
   
     return (
-      <div onScroll={handleScroll} style={{ overflowY: 'scroll', maxHeight: '1000px' }} className={className}>
+      <div onScroll={handleScroll} style={{ overflowY: 'scroll', maxHeight: '1500px' }} className={className}>
         {children}
         {loading && <p> Loading ... </p>}
       </div>

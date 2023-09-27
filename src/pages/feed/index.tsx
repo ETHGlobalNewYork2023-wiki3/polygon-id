@@ -16,7 +16,6 @@ export default function Feed() {
         const { data: publication, loading: isPostLoading} = usePublication({
             publicationId: '0x91ba-0x01' as PublicationId
         })
-        console.log("HAHAS", publication)
     return (
         <>
             <LoginButton />

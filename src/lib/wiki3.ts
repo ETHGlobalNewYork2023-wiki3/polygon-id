@@ -10,7 +10,7 @@ export const isCommentAVote = (comment : string) => {
         comment.startsWith(WIKI3_HEADER) && comment.endsWith(WIKI3_FOOTER)
 }
 
-const collectAggregateDataFromVote = (content : string) => {
+const collectAggregateDataFromVote = (content : string) : [number, string[]] => {
     if (!isCommentAVote) {
         throw new Error("collectIdentitiesFromVote received a non vote comment")
     }

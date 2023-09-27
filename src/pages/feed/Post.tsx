@@ -1,6 +1,7 @@
 import React from "react";
 import { Post, useComments } from "@lens-protocol/react-web";
 import Comments from "./Comments";
+import Image from "next/image"
 
 function convertIPFSToGateway(ipfsHash: string) {
     const doubleipfs = "ipfs://ipfs://"
@@ -28,7 +29,7 @@ const Post = ({ post } : { post : Post}) => {
         
     return (
     <div className="flex content-center w-full">
-        <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white m-8 w-full">
+        <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white m-8 w-1/3">
             <img className="w-full" src={imageUrl}></img>
             <div className="px-8 py-4">
                 <p className="text-gray-900 text-base">{post.profile.name} </p>

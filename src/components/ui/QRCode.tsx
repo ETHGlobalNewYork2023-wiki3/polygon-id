@@ -25,7 +25,6 @@ const QRCode = ({publicationId, identity, profile, veracity} : {profile: Profile
 
    useEffect(() => {
         if (!!verificationResponse) {
-            console.log("FIRE USECOMMENT")
             handleCreateVote()
         }},
         [verificationResponse]
@@ -45,10 +44,9 @@ const QRCode = ({publicationId, identity, profile, veracity} : {profile: Profile
           type: CollectPolicyType.NO_COLLECT
         },
       });
-      console.log("DINGGINDSGN", response)
    }
    return (
-    <div>
+    <div className="w-[384px]">
         {/* <Button onClick={() => handleCreateVote()}> Fire UseMakeComment </Button> */}
         {!loadingQrCode && <Canvas
         text={JSON.stringify(qrCode)}

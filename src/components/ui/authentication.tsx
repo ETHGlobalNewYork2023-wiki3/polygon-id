@@ -27,9 +27,6 @@ function LoginButton() {
       const result = await login({
         address: walletClient.account.address,
       });
-      console.log(result)
-      console.log(loading)
-      console.log(activeProfile)
     }
   };
  
